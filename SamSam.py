@@ -1,11 +1,18 @@
 import streamlit as st
-from project.models import Payment,Invoice,GiftCard,ExternalPayment,VaultCash,KassaStrook,EG,REPR
+
 import project.pages.Invoices as Invoices
 import project.pages.PIN_Payments as PIN_Payments
+import project.pages.EG as EG
+import project.pages.External_payments as External_payments
+import project.pages.Gift_Cards as Gift_Cards
+import project.pages.REPR as REPR
+import project.pages.Vault_cash as Vault_cash
+import project.pages.Kassastrook as Kassastrook
+
 import streamlit_authenticator as stauth
 import yaml
 from yaml.loader import SafeLoader
-
+st.set_page_config(layout='wide')
 
 def main():
    with open('./config.yaml') as file:
@@ -27,11 +34,26 @@ def main():
          st.error('Username/password is incorrect')
       elif st.session_state["authentication_status"] is None:
          st.warning('Please enter your username and password')
+         
    if authentication_status == True:
-      page=st.selectbox(label='Navigation',options=['Payments','Invocies'])
-      if page == 'Invoices':
-         Invoices.main()
-      else:
+      tabs = ["Payment", "Invoice", "Gift Card", "External Payment", "Vault Cash", "Kassa Strook", "EG", "REPR"]
+      page=st.sidebar.selectbox(label='Navigation',options=tabs)
+      if page == 'Payment':
          PIN_Payments.main()
+      elif page == 'Invoice':
+         Invoices.main()
+      elif page == 'Gift Card':
+         Gift_Cards.main()
+      elif page == 'External Payments':
+         External_payments.main()
+      elif page == 'Vault Cash':
+         Vault_cash.main()
+      elif page == 'Kassa Strook':
+         Kassastrook.main()
+      elif page == 'EG':
+         EG.main()
+      elif page == 'REPR':
+         REPR.main()
+      
 if __name__ == "__main__":
     main()
