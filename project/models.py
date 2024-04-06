@@ -4,11 +4,9 @@ from sqlalchemy.ext.declarative import declarative_base
 from datetime import datetime
 from sqlalchemy import Column, Integer, String, Float, Date, DateTime, LargeBinary
 from sqlalchemy import create_engine, MetaData
-
-
+from datetime import datetime
+from pytz import timezone
 Base = declarative_base()
-
-
 
 class Payment(Base):
     __tablename__ = 'payment'
@@ -19,8 +17,8 @@ class Payment(Base):
     vpay = Column(Float, nullable=False)
     mastercard = Column(Float, nullable=False)
     maestro = Column(Float, nullable=False)
-    registration_date = Column(DateTime, nullable=False, default=datetime.utcnow)
-    updated_date = Column(DateTime, nullable=False, default=datetime.utcnow, onupdate=datetime.now())
+    registration_date = Column(DateTime, nullable=False, default=datetime.now(timezone('Europe/Amsterdam')))
+    updated_date = Column(DateTime, nullable=False, default=datetime.now(timezone('Europe/Amsterdam')), onupdate=datetime.now(timezone('Europe/Amsterdam')))
     
 
     def __repr__(self):
@@ -38,8 +36,8 @@ class Invoice(Base):
     bussiness_code = Column(String,nullable=False)
     description = Column(String(500),nullable=False)
     status = Column(String(200),nullable=False)
-    date = Column(DateTime, nullable=False, default=datetime.utcnow)
-    updated_date = Column(DateTime, nullable=False, default=datetime.utcnow, onupdate=datetime.now())
+    date = Column(DateTime, nullable=False, default=datetime.now(timezone('Europe/Amsterdam')))
+    updated_date = Column(DateTime, nullable=False, default=datetime.now(timezone('Europe/Amsterdam')), onupdate=datetime.now(timezone('Europe/Amsterdam')))
 
     def __repr__(self):
         return f"Invoice('{self.id}','{self.contact}', '{self.email}', '{self.amount}', '{self.bussiness_name}', '{self.bussiness_code}', '{self.description}', '{self.status}', '{self.updated_date}')"
@@ -52,8 +50,8 @@ class GiftCard(Base):
     source = Column(String(200))
     amount = Column(Float,nullable=False)
     description = Column(String(500))
-    date = Column(DateTime, nullable=False, default=datetime.utcnow)
-    updated_date = Column(DateTime, nullable=False, default=datetime.utcnow, onupdate=datetime.now())
+    date = Column(DateTime, nullable=False, default=datetime.now(timezone('Europe/Amsterdam')))
+    updated_date = Column(DateTime, nullable=False, default=datetime.now(timezone('Europe/Amsterdam')), onupdate=datetime.now(timezone('Europe/Amsterdam')))
 
     def __repr__(self):
         return f"GiftCard('{self.id}','{self.source}', '{self.amount}', '{self.description}', '{self.date}', '{self.updated_date}')"
@@ -65,8 +63,8 @@ class ExternalPayment(Base):
     source = Column(String(200))
     amount = Column(Float,nullable=False)
     description = Column(String(500))
-    date = Column(DateTime, nullable=False, default=datetime.utcnow)
-    updated_date = Column(DateTime, nullable=False, default=datetime.utcnow, onupdate=datetime.now())
+    date = Column(DateTime, nullable=False, default=datetime.now(timezone('Europe/Amsterdam')))
+    updated_date = Column(DateTime, nullable=False, default=datetime.now(timezone('Europe/Amsterdam')), onupdate=datetime.now(timezone('Europe/Amsterdam')))
 
     def __repr__(self):
         return f"ExternalPayment('{self.id}','{self.source}', '{self.amount}', '{self.description}', '{self.date}', '{self.updated_date}')"
@@ -85,8 +83,8 @@ class VaultCash(Base):
     amount020 = Column(Integer)
     amount010 = Column(Integer)
     amount005 = Column(Integer)
-    date = Column(Date, nullable=False, default=datetime.utcnow)
-    updated_date = Column(DateTime, nullable=False, default=datetime.utcnow, onupdate=datetime.now())
+    date = Column(Date, nullable=False, default=datetime.now(timezone('Europe/Amsterdam')))
+    updated_date = Column(DateTime, nullable=False, default=datetime.now(timezone('Europe/Amsterdam')), onupdate=datetime.now(timezone('Europe/Amsterdam')))
 
 
 
@@ -109,8 +107,8 @@ class KassaStrook(Base):
     Omzet_kadobonnen_2220 = Column(Float)
     Catering_8050 = Column(Float)
     Zaalhuur_8400 = Column(Float)
-    date = Column(DateTime, nullable=False, default=datetime.utcnow)
-    updated_date = Column(DateTime, nullable=False, default=datetime.utcnow, onupdate=datetime.now())
+    date = Column(DateTime, nullable=False, default=datetime.now(timezone('Europe/Amsterdam')))
+    updated_date = Column(DateTime, nullable=False, default=datetime.now(timezone('Europe/Amsterdam')), onupdate=datetime.now(timezone('Europe/Amsterdam')))
     
     def __repr__(self):
         return f"KassaStrook('{self.id}','{self.Hoofdgerechten_8000}', '{self.Nagerechten_8030}', '{self.Gebak_8040}', '{self.Kleine_kaart_8010}', '{self.Dagschotels_8020}', '{self.Dranken_hoog_8100}', '{self.Frisdranken_overig_8200}', '{self.Koffie_8300}', '{self.Cultuurkaarten_4760}', '{self.Dagschotelabonnementer_2200}', '{self.Omzet_kadobonnen_2220}', '{self.Catering_8050}', '{self.Zaalhuur_8400}', '{self.date}', '{self.updated_date}')"
@@ -126,7 +124,7 @@ class EG(Base): # ! DONE
     EG_Dagschotels = Column(Float)
     EG_Nagerechten = Column(Float)
     EG_Gebak = Column(Float)
-    date = Column(String(200), nullable=False, default=datetime.utcnow)
+    date = Column(String(200), nullable=False, default=datetime.now(timezone('Europe/Amsterdam')))
 
 
     def __repr__(self):
@@ -143,7 +141,7 @@ class REPR(Base): # ! DONE
     REPR_Dagschotels = Column(Float)
     REPR_Nagerechten = Column(Float)
     REPR_Gebak = Column(Float)
-    date = Column(String(200), nullable=False, default=datetime.utcnow)
+    date = Column(String(200), nullable=False, default=datetime.now(timezone('Europe/Amsterdam')))
 
 
     def __repr__(self):
