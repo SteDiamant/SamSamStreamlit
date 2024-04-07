@@ -44,7 +44,7 @@ class PAYMENT:
         st.header("Update Payment Form")
         filter = st.date_input("Filter by Date")
         if st.button("Return payment by date"):
-            payment = session.query(Payment).filter(func.date(Payment.registration_date) == filter).all()
+            payment = session.query(Payment).filter(func.date(Payment.date) == filter).all()
             st.dataframe(parse_response(payment),use_container_width=True) 
             st.success("Payment returned successfully!")
 
