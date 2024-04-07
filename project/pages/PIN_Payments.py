@@ -48,12 +48,29 @@ class PAYMENT:
             st.dataframe(parse_response(payment),use_container_width=True) 
             st.success("Payment returned successfully!")
 
+
+    def delete_payment_form():
+        st.header("Delete Payment Form")
+        id = st.number_input("ID that will be deleted", step=1, min_value=0)
+        if st.button("Delete Payment",disabled=False):
+            payment = session.query(Payment).filter(Payment.id == id).first()
+            if payment:
+                session.delete(payment)
+                session.commit()
+                st.success("Payment deleted successfully!")
+            else:
+                st.error("Payment not found!")
+
 def main():
-    tab1,tab2 = st.tabs(["Add Payment","Update Payment"])
+    tab1,tab2 = st.tabs(["Add Payment","Update Payment",])
     with tab1:
         PAYMENT.add_payment_form()
     with tab2:
-        PAYMENT.add_update_payment_form()
+        c1,c2 = st.columns([1,1])
+        with c1:
+            PAYMENT.add_update_payment_form()
+        with c2:
+            PAYMENT.delete_payment_form()
 
 if __name__ == "__main__":
     main()
