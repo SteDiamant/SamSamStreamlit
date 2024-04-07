@@ -2,7 +2,7 @@ import streamlit as st
 import json
 import os
 from streamlit_lottie import st_lottie
-from project.option_menu import option_menu
+from streamlit_option_menu import option_menu
 from streamlit_cookies_manager import EncryptedCookieManager
 from .utils import check_usr_pass
 from .utils import load_lottieurl
