@@ -9,7 +9,7 @@ import project.pages.REPR as REPR
 import project.pages.Vault_cash as Vault_cash
 import project.pages.Kassastrook as Kassastrook
 import project.pages.Statistics as Statistics
-from project.option_menu import option_menu
+from project.option_menu.__init__ import option_menu
 from project.auth_ui.widgets import __login__
 import warnings
 

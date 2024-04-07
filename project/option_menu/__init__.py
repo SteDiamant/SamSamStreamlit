@@ -1,6 +1,6 @@
 import streamlit as st
 import streamlit.components.v1 as components
-from streamlit_option_menu.streamlit_callback import register_callback
+from SamSamStreamlit.project.option_menu.streamlit_callback import register_callback
 import os
 
 _RELEASE = True
