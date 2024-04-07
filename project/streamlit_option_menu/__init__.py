@@ -17,7 +17,7 @@ _RELEASE = True
 # best practice.
 
 if not _RELEASE:
-    _component_func = components.declare_component("option_menu",url="http://localhost:3001",)
+    _component_func = components.declare_component("option_menu")
 else:
     parent_dir = os.path.dirname(os.path.abspath(__file__))
     st.write(parent_dir)
