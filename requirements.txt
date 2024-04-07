@@ -8,4 +8,4 @@ streamlit_login_auth_ui
 streamlit-option-menu
 matplotlib
 seaborn
-argon2
+argon2-cffi
