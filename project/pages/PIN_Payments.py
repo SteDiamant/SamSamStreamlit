@@ -62,7 +62,7 @@ class PAYMENT:
                 st.error("Payment not found!")
 
 def main():
-    tab1,tab2 = st.tabs(["Add Payment","Update Payment",])
+    tab1,tab2 = st.tabs(["Add Payment","Update Payment"])
     with tab1:
         PAYMENT.add_payment_form()
     with tab2:
