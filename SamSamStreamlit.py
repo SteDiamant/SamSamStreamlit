@@ -29,7 +29,7 @@ def main():
 
 
    if LOGGED_IN == True:
-      page=_components(None, ["Payment", "Invoice", "Gift Card", "External_P", "Vault Cash", "Kassa", "EG", "REPR","Statistics"],  
+      page=option_menu(None, ["Payment", "Invoice", "Gift Card", "External_P", "Vault Cash", "Kassa", "EG", "REPR","Statistics"],  
          menu_icon="cast", default_index=0, orientation="horizontal",
          styles={
             "container": { "background-color": "#fafafa"},
