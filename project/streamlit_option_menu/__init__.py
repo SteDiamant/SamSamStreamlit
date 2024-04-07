@@ -23,7 +23,7 @@ if not _RELEASE:
     )
 else:
     parent_dir = os.path.dirname(os.path.abspath(__file__))
-    build_dir = os.path.join(parent_dir, r"frontend/dist")
+    build_dir = os.path.join(parent_dir, "frontend/dist")
     _component_func = components.declare_component(
         "option_menu", path=build_dir)
 
