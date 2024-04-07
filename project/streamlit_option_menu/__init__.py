@@ -1,5 +1,5 @@
 import streamlit as st
-import streamlit.components.v1 as components
+import streamlit.components.v1 as _components
 from streamlit_option_menu.streamlit_callback import register_callback
 import os
 
@@ -16,13 +16,13 @@ _RELEASE = True
 # your component frontend. Everything else we do in this file is simply a
 # best practice.
 
-if not _RELEASE:
-    _component_func = components.declare_component("option_menu")
-else:
-    parent_dir = os.path.dirname(os.path.abspath(__file__))
-    st.write(parent_dir)
-    build_dir = os.path.join(parent_dir, "streamlit_option_menu/frontend/dist")
-    _component_func = components.declare_component("option_menu", path=build_dir)
+# if not _RELEASE:
+#     _component_func = components.declare_component("option_menu")
+# else:
+#     parent_dir = os.path.dirname(os.path.abspath(__file__))
+#     st.write(parent_dir)
+#     build_dir = os.path.join(parent_dir, "streamlit_option_menu/frontend/dist")
+#     _component_func = components.declare_component("option_menu", path=build_dir)
 
 # Create a wrapper function for the component. This is an optional
 # best practice - we could simply expose the component function returned by
@@ -59,7 +59,7 @@ def option_menu(menu_title, options, default_index=0, menu_icon=None, icons=None
     if manual_select is not None:  
         default_index = manual_select
         
-    component_value = _component_func(options=options, 
+    component_value = _components(options=options, 
                 key=key, defaultIndex=default_index, icons=icons, menuTitle=menu_title, 
                 menuIcon=menu_icon, default=options[default_index], 
                 orientation=orientation, styles=styles, manualSelect=manual_select)
