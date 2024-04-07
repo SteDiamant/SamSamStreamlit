@@ -307,8 +307,8 @@ class __login__:
                 if st.session_state['LOGGED_IN'] == False:
                     self.animation()
         
-        if selected_option == 'Create Account':
-            self.sign_up_widget()
+        # if selected_option == 'Create Account':
+        #     self.sign_up_widget()
 
 
 
