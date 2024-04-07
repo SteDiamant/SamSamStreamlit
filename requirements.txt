@@ -4,6 +4,6 @@ SQLAlchemy
 streamlit
 streamlit-authenticator
 streamlit-sqlalchemy
-st_login 
+streamlit_login_auth_ui
 matplotlib
 seaborn
