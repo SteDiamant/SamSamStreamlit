@@ -52,3 +52,6 @@ def main():
         EXTERNAL_PAYMENT.add_external_payment_form()
     with tab2:
         EXTERNAL_PAYMENT.update_external_payment_form()
+
+if __name__ == "__main__":
+    main()

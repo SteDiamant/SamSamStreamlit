@@ -47,6 +47,8 @@ class E_G:
             st.dataframe(parse_response(eg), use_container_width=True)
             st.success("EG returned successfully!")
 
+    
+
 def main():
     tab1,tab2=st.tabs(["Add EG","Update EG"])
     with tab1:

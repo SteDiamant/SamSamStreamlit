@@ -17,12 +17,12 @@ class Payment(Base):
     vpay = Column(Float, nullable=False)
     mastercard = Column(Float, nullable=False)
     maestro = Column(Float, nullable=False)
-    registration_date = Column(DateTime, nullable=False, default=datetime.now(timezone('Europe/Amsterdam')))
+    date = Column(DateTime, nullable=False, default=datetime.now(timezone('Europe/Amsterdam')))
     updated_date = Column(DateTime, nullable=False, default=datetime.now(timezone('Europe/Amsterdam')), onupdate=datetime.now(timezone('Europe/Amsterdam')))
     
 
     def __repr__(self):
-        return f"Payment('{self.id}','{self.pinnumber}', '{self.visa}', '{self.vpay}', '{self.mastercard}', '{self.maestro}', '{self.updated_date}')"
+        return f"Payment('{self.id}','{self.pinnumber}', '{self.visa}', '{self.vpay}', '{self.mastercard}', '{self.maestro}', '{self.date}')"
     
 
 class Invoice(Base):
