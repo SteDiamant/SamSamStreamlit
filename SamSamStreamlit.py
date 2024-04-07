@@ -9,9 +9,9 @@ import project.pages.REPR as REPR
 import project.pages.Vault_cash as Vault_cash
 import project.pages.Kassastrook as Kassastrook
 import project.pages.Statistics as Statistics
-from project.streamlit_option_menu.streamlit_option_menu import option_menu
-from project.streamlit_login_auth_ui.streamlit_login_auth_ui.widgets import __login__
-
+from project.streamlit_option_menu import option_menu
+from project.streamlit_login_auth_ui.widgets import __login__
+import warnings
 
 #Ignore warnings from streamlit
 
