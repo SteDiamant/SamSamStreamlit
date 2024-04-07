@@ -33,7 +33,7 @@ def main():
          styles={
             "container": { "background-color": "#fafafa"},
             "nav-link": {"font-size": "15px", "text-align": "left", "margin":"0px", "--hover-color": "#eee"},
-            "nav-link-selected": {"background-color": "green"},
+            "nav-link-selected": {"background-color": "red"},
             "nav-link-hover": {"background-color": "#eee"},
 
          }
