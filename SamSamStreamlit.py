@@ -9,8 +9,8 @@ import project.pages.REPR as REPR
 import project.pages.Vault_cash as Vault_cash
 import project.pages.Kassastrook as Kassastrook
 import project.pages.Statistics as Statistics
-from streamlit_option_menu import option_menu
-from streamlit_login_auth_ui.widgets import __login__
+from project.streamlit_option_menu.streamlit_option_menu import option_menu
+from project.streamlit_login_auth_ui.streamlit_login_auth_ui.widgets import __login__
 
 
 #Ignore warnings from streamlit
@@ -22,7 +22,8 @@ def main():
                      company_name = "SamSam",
                      width = 200, height = 250, 
                      logout_button_name = 'Logout', hide_menu_bool = False, 
-                     hide_footer_bool = True,) 
+                     hide_footer_bool = True,
+                     ) 
 
    LOGGED_IN = __login__obj.build_login_ui()
 
