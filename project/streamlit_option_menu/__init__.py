@@ -15,19 +15,18 @@ _RELEASE = True
 # *only thing* you need to do to create the binding between Streamlit and
 # your component frontend. Everything else we do in this file is simply a
 # best practice.
-try:
-    if not _RELEASE:
-        _component_func = components.declare_component(
+
+if not _RELEASE:
+    _component_func = components.declare_component(
             "option_menu",
             url="http://localhost:3001",
         )
-    else:
+else:
         parent_dir = os.path.dirname(os.path.abspath(__file__))
         build_dir = os.path.join(parent_dir, "frontend/dist")
         _component_func = components.declare_component(
             "option_menu", path=build_dir)
-except Exception as e:
-    st.error("Error loading the component. Please check if the component is running on port 3002")
+
 # Create a wrapper function for the component. This is an optional
 # best practice - we could simply expose the component function returned by
 # `declare_component` and call it done. The wrapper allows us to customize
