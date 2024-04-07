@@ -6,3 +6,4 @@ streamlit-authenticator
 streamlit-sqlalchemy
 st_login 
 matplotlib
+seaborn
