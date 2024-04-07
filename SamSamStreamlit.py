@@ -9,7 +9,7 @@ import project.pages.REPR as REPR
 import project.pages.Vault_cash as Vault_cash
 import project.pages.Kassastrook as Kassastrook
 import project.pages.Statistics as Statistics
-from project.streamlit_option_menu.__init__ import option_menu
+from project.streamlit_option_menu.__init__ import option_menu,_components
 from project.auth_ui.widgets import __login__
 import warnings
 
@@ -29,7 +29,7 @@ def main():
 
 
    if LOGGED_IN == True:
-      page=option_menu(None, ["Payment", "Invoice", "Gift Card", "External_P", "Vault Cash", "Kassa", "EG", "REPR","Statistics"],  
+      page=_components(None, ["Payment", "Invoice", "Gift Card", "External_P", "Vault Cash", "Kassa", "EG", "REPR","Statistics"],  
          menu_icon="cast", default_index=0, orientation="horizontal",
          styles={
             "container": { "background-color": "#fafafa"},
