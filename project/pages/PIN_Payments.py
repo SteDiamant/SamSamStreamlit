@@ -33,11 +33,11 @@ class PAYMENT:
                 print(response)
                 #CONVERT Payment('4','1234', '1000.0', '2000.0', '3000.0', '4000.0', '2024-04-05 00:00:00') TO DATAFRAME
                 payment = response[0]
-                data = [(payment.id, payment.pinnumber, payment.visa, payment.vpay, payment.mastercard, payment.maestro, payment.registration_date)]
+                data = [(payment.id, payment.pinnumber, payment.visa, payment.vpay, payment.mastercard, payment.maestro, payment.date)]
                 payments_df=pd.DataFrame(data=data,columns=['id','pinnumber','visa','vpay','mastercard','maestro','date'])
                 return payments_df
             else:
-                data = [(payment.id, payment.pinnumber, payment.visa, payment.vpay, payment.mastercard, payment.maestro, payment.registration_date) for payment in response]
+                data = [(payment.id, payment.pinnumber, payment.visa, payment.vpay, payment.mastercard, payment.maestro, payment.date) for payment in response]
                 payments_df=pd.DataFrame(data=data,columns=['id','pinnumber','visa','vpay','mastercard','maestro','date'])
                 return payments_df
             
