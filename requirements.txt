@@ -8,3 +8,4 @@ streamlit_login_auth_ui
 streamlit-option-menu
 matplotlib
 seaborn
+argon2
