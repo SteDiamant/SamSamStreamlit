@@ -13,9 +13,10 @@ from streamlit_option_menu import option_menu
 from project.auth_ui.widgets import __login__
 import warnings
 
+
 #Ignore warnings from streamlit
 
-st.set_page_config(layout='wide')
+st.set_page_config(layout='wide',)
 
 def main():
    __login__obj = __login__(auth_token = "courier_auth_token", 
