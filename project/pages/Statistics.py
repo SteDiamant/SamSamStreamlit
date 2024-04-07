@@ -26,7 +26,7 @@ def read_data():
 
     # Convert each set of records into a DataFrame
     payment_df = pd.DataFrame([vars(record) for record in payment_records])
-    payment_df['date'] = payment_df['date'].apply(lambda x: x.date())
+    payment_df['date'] = payment_df['registration_date'].apply(lambda x: x.date())
     payment_df = payment_df.drop(columns=['id', '_sa_instance_state', 'updated_date'])
 
     invoice_df = pd.DataFrame([vars(record) for record in invoice_records])
