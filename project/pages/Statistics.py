@@ -93,7 +93,6 @@ def main():
         merged_df=merged_df1.combine_first(merged_df2)
         merged_df['Daily_total_ZITA']=merged_df['Daily_payments']+merged_df['Daily_invoices']+merged_df['Daily_gift_cards']+merged_df['Daily_external_payments']+merged_df['Daily_vault_cash']+merged_df['Daily_kassa_strook']+merged_df['Daily_eg']+merged_df['Daily_repr']
         merged_df=merged_df.set_index('date')
-        #st.write(merged_df)
         st.title("Daily Total ZITA")
         plot_bar_chart(merged_df.drop(columns=['Daily_total_ZITA']))
         
