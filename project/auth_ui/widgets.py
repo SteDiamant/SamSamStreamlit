@@ -1,7 +1,6 @@
 import streamlit as st
 import json
 import os
-from streamlit_lottie import st_lottie
 from streamlit_option_menu import option_menu
 from streamlit_cookies_manager import EncryptedCookieManager
 from .utils import check_usr_pass
@@ -123,8 +122,8 @@ class __login__:
         """
         Renders the lottie animation.
         """
-        lottie_json = load_lottieurl(self.lottie_url)
-        st.image('logo.jpg', use_column_width=True)
+        
+        st.image('logo.jpg', use_column_width=False)
         #st_lottie(lottie_json, speed = 1, width = self.width, height = self.height, key = 'initial')
 
 
