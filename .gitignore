@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+_secret_auth_.json
 # C extensions
 *.so
 # Ignore specific database file
