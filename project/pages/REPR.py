@@ -48,12 +48,26 @@ class R_E_P_R:
             st.dataframe(parse_response(repr), use_container_width=True)
             st.success("REPR returned successfully!")
 
+    def delete_repr_form():
+        st.header("Delete REPR Form")
+        id = st.number_input("ID that will be deleted", step=1, min_value=0)
+        if st.button("Delete REPR", disabled=False):
+            repr = session.query(REPR).filter(REPR.id == id).first()
+            if repr:
+                session.delete(repr)
+                session.commit()
+                st.success("REPR deleted successfully!")
+
 def main():
     tab1,tab2=st.tabs(["Add REPR","Update REPR"])
     with tab1:
         R_E_P_R.add_repr_form()
     with tab2:
-        R_E_P_R.update_repr_form()
+        c1,c2 = st.columns([1,1])
+        with c1:
+            R_E_P_R.update_repr_form()
+        with c2:
+            R_E_P_R.delete_repr_form()
 
 if __name__=="__main__":
     main()

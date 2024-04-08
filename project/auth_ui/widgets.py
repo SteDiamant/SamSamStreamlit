@@ -21,7 +21,7 @@ class __login__:
     """
     Builds the UI for the Login/ Sign Up page.
     """
-
+    
     def __init__(self, auth_token: str, company_name: str, width, height, logout_button_name: str = 'Logout', hide_menu_bool: bool = False, hide_footer_bool: bool = False, lottie_url: str = "https://assets8.lottiefiles.com/packages/lf20_ktwnwv5m.json" ):
         """
         Arguments:
@@ -79,7 +79,7 @@ class __login__:
                 username=fetched_cookies['__streamlit_login_signup_ui_username__']
                 return username
  
-
+    
     def login_widget(self) -> None:
         """
         Creates the login widget, checks and sets cookies, authenticates the users.

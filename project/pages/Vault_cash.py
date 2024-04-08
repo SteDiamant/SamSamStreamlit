@@ -54,12 +54,27 @@ class VAULT_CASH:
                 st.dataframe(parse_response(gift_card), use_container_width=True)
                 st.success("Gift card returned successfully!")
 
+    def delete_vault_cash_form():
+        st.header("Delete Vault Cash Form")
+        id = st.number_input("ID that will be deleted", step=1, min_value=0)
+        if st.button("Delete Vault Cash",disabled=False):
+            vault_cash = session.query(VaultCash).filter(VaultCash.id == id).first()
+            if vault_cash:
+                session.delete(vault_cash)
+                session.commit()
+                st.success("Vault Cash deleted successfully!")
+
 def main():
     tab1,tab2 = st.tabs(["Add Vault Cash","Update Vault Cash"])
     with tab1:
         VAULT_CASH.add_vault_cash_form()
     with tab2:
-        VAULT_CASH.update_vault_cash_form()
+        c1,c2 = st.columns([1,1])
+        with c1:
+            VAULT_CASH.update_vault_cash_form()
+        with c2:
+            VAULT_CASH.delete_vault_cash_form()
+        
 
 if __name__ == "__main__":
     main()

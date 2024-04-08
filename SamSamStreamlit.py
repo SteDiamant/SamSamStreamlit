@@ -11,7 +11,7 @@ import project.pages.Kassastrook as Kassastrook
 import project.pages.Statistics as Statistics
 from streamlit_option_menu import option_menu
 from project.auth_ui.widgets import __login__
-import warnings
+from datetime import datetime
 
 
 #Ignore warnings from streamlit
@@ -28,15 +28,16 @@ def main():
 
    LOGGED_IN = __login__obj.build_login_ui()
 
-
+   
    if LOGGED_IN == True:
+      
       page=option_menu(None, ["Payment", "Invoice", "Gift Card", "External_P", "Vault Cash", "Kassa", "EG", "REPR","Statistics"],  
          menu_icon="cast", default_index=0, orientation="horizontal",
          styles={
             "container": { "background-color": "#fafafa"},
-            "nav-link": {"font-size": "15px", "text-align": "left", "margin":"0px", "--hover-color": "#eee"},
+            "nav-link": {"font-size": "15px", "text-align": "left", "margin":"0px", "--hover-color": "#98d2ff"},
             "nav-link-selected": {"background-color": "#4BB0FF"},
-            "nav-link-hover": {"background-color": "#eee"},
+            "nav-link-hover": {"background-color": "#98d2ff"},
 
          }
       )
@@ -58,6 +59,9 @@ def main():
          REPR.main()
       else:
          Statistics.main()
-      
+
+      st.sidebar.write(str('Date: '+datetime.now().strftime("%Y-%m-%d %H:%M")))
+      st.sidebar.write(str('User: '+__login__obj.get_username()))
+
 if __name__ == "__main__":
     main()

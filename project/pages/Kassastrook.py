@@ -53,9 +53,22 @@ class KASSA_STROOK:
             st.dataframe(parse_response(kassastrook),use_container_width=True) 
             st.success("Kassa Strook returned successfully!")
 
+    def delete_kassa_strook_form():
+        st.header("Delete Kassa Strook Form")
+        id = st.number_input("ID that will be deleted", step=1, min_value=0)
+        if st.button("Delete Kassa Strook",disabled=False):
+            kassastrook = session.query(KassaStrook).filter(KassaStrook.id == id).first()
+            if kassastrook:
+                session.delete(kassastrook)
+                session.commit()
+                st.success("Kassa Strook deleted successfully!")
 def main():
     tab1,tab2=st.tabs(["Add Kassa Strook","Update Kassa Strook"])
     with tab1:
         KASSA_STROOK.add_kassa_strook_form()
     with tab2:
-        KASSA_STROOK.update_kassa_strook_form()
+        c1,c2=st.columns([1,1])
+        with c1:
+            KASSA_STROOK.update_kassa_strook_form()
+        with c2:
+            KASSA_STROOK.delete_kassa_strook_form()

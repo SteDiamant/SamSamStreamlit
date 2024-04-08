@@ -50,12 +50,25 @@ class INVOICE:
             st.dataframe(parse_response(invoice),use_container_width=True) 
             st.success("Invoice returned successfully!")
 
+    def delete_invoice_form():
+        st.header("Delete Invoice Form")
+        id = st.number_input("ID that will be deleted", step=1, min_value=0)
+        if st.button("Delete Invoice",disabled=False):
+            invoice = session.query(Invoice).filter(Invoice.id == id).first()
+            if invoice:
+                session.delete(invoice)
+                session.commit()
+                st.success("Invoice deleted successfully!")
 def main():
     tab1,tab2 = st.tabs(["Add Invoice","Update Invoice"])
     with tab1:
         INVOICE.add_invoice_form()
     with tab2:
-        INVOICE.update_invoice_form()
+        c1,c2 = st.columns([1,1])
+        with c1:
+            INVOICE.update_invoice_form()
+        with c2:
+            INVOICE.delete_invoice_form()
 
 if __name__ == "__main__":
     main()

@@ -24,7 +24,7 @@ class PAYMENT:
             session.commit()
             st.success("Payment added successfully!")
 
-    def add_update_payment_form():
+    def update_payment_form():
         
         def parse_response(response):
             if len(response) == 0:
@@ -68,7 +68,7 @@ def main():
     with tab2:
         c1,c2 = st.columns([1,1])
         with c1:
-            PAYMENT.add_update_payment_form()
+            PAYMENT.update_payment_form()
         with c2:
             PAYMENT.delete_payment_form()
 

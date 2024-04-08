@@ -46,12 +46,24 @@ class EXTERNAL_PAYMENT:
             st.dataframe(parse_response(gift_card), use_container_width=True)
             st.success("Gift card returned successfully!")
 
+    def delete_external_payment_form():
+        st.header("Delete External Payment Form")
+        id = st.number_input("ID that will be deleted", step=1, min_value=0)
+        if st.button("Delete External Payment",disabled=False):
+            external_payment = session.query(ExternalPayment).filter(ExternalPayment.id == id).first()
+            if external_payment:
+                session.delete(external_payment)
+                session.commit()
 def main():
     tab1,tab2 = st.tabs(["Add External Payment","Update External Payment"])
     with tab1:
         EXTERNAL_PAYMENT.add_external_payment_form()
     with tab2:
-        EXTERNAL_PAYMENT.update_external_payment_form()
+        c1,c2 = st.columns([1,1])
+        with c1:
+            EXTERNAL_PAYMENT.update_external_payment_form()
+        with c2:
+            EXTERNAL_PAYMENT.delete_external_payment_form()
 
 if __name__ == "__main__":
     main()

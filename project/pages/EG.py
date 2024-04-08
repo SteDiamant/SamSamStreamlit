@@ -47,14 +47,26 @@ class E_G:
             st.dataframe(parse_response(eg), use_container_width=True)
             st.success("EG returned successfully!")
 
-    
+    def delete_eg_form():
+        st.header("Delete EG Form")
+        id = st.number_input("ID that will be deleted", step=1, min_value=0)
+        if st.button("Delete EG", disabled=False):
+            eg = session.query(EG).filter(EG.id == id).first()
+            if eg:
+                session.delete(eg)
+                session.commit()
+                st.success("EG deleted successfully!")
 
 def main():
     tab1,tab2=st.tabs(["Add EG","Update EG"])
     with tab1:
         E_G.add_eg_form()
     with tab2:
-        E_G.update_eg_form()
+        c1,c2 = st.columns([1,1])
+        with c1:
+            E_G.update_eg_form()
+        with c2:
+            E_G.delete_eg_form()
 
 
 if __name__=="__main__":

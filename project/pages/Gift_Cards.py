@@ -46,12 +46,24 @@ class GIFT_CARD:
             st.dataframe(parse_response(gift_card), use_container_width=True)
             st.success("Gift card returned successfully!")
 
+    def delete_gift_card_form():
+        st.header("Delete Gift Card Form")
+        id = st.number_input("ID that will be deleted", step=1, min_value=0)
+        if st.button("Delete Gift Card",disabled=False):
+            gift_card = session.query(GiftCard).filter(GiftCard.id == id).first()
+            if gift_card:
+                session.delete(gift_card)
+                session.commit()
+                st.success("Gift Card deleted successfully!")
 def main():
     tab1,tab2 = st.tabs(["Add Gift Card","Update Gift Card"])
     with tab1:
         GIFT_CARD.add_gift_card_form()
     with tab2:
-        GIFT_CARD.update_gift_card_form()
-
+        c1,c2 = st.columns([1,1])
+        with c1:
+            GIFT_CARD.update_gift_card_form()
+        with c2:
+            GIFT_CARD.delete_gift_card_form()
 if __name__=="__main__":
     main()
