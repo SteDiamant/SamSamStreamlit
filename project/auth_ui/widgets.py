@@ -124,7 +124,7 @@ class __login__:
         Renders the lottie animation.
         """
         lottie_json = load_lottieurl(self.lottie_url)
-        st.image('samsam.png', use_column_width=True)
+        st.image('logo.jpg', use_column_width=True)
         #st_lottie(lottie_json, speed = 1, width = self.width, height = self.height, key = 'initial')
 
 
